@@ -16,6 +16,8 @@ Ember.Validations.validators.local.Format = Ember.Validations.validators.Base.ex
       }
     } else if (this.options['with'] && !this.options['with'].test(this.model.get(this.property))) {
       this.errors.pushObject(this.options.message);
+    } else if (this.options['withProperty'] && !this.model.get(this.options['withProperty']).test(this.model.get(this.property))) {
+      this.errors.pushObject(this.options.message);
     } else if (this.options.without && this.options.without.test(this.model.get(this.property))) {
       this.errors.pushObject(this.options.message);
     }
